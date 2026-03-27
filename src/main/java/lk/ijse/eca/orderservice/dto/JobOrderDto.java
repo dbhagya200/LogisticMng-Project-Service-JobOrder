@@ -25,7 +25,6 @@ public class JobOrderDto {
     @NotNull(message = "Delivery location is required")
     private String deliveryLocation;
 
-    @NotNull(message = "Date is required")
     private LocalDate createdAt;
 
 }

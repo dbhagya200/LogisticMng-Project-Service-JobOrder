@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -26,6 +27,10 @@ public class JobOrderServiceImpl implements JobOrderService {
     @Override
     public JobOrderDto createJobOrder(JobOrderDto dto) {
         log.debug("Creating jobOrder for customer: {}", dto.getCustomerNic());
+
+        if (dto.getCreatedAt() == null) {
+            dto.setCreatedAt(LocalDate.now());
+        }
 
         CustomerDto customer = customerServiceClient.getCustomer(dto.getCustomerNic());
 
